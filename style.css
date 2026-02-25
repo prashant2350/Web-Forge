@@ -26,29 +26,7 @@ body {
   cursor: none;
 }
 
-/* Custom cursor */
-.cursor {
-  width: 12px; height: 12px;
-  background: var(--saffron);
-  border-radius: 50%;
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.15s ease;
-  mix-blend-mode: screen;
-}
-.cursor-ring {
-  width: 36px; height: 36px;
-  border: 1.5px solid var(--saffron);
-  border-radius: 50%;
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9998;
-  transition: all 0.3s ease;
-  opacity: 0.5;
-}
+
 
 /* Nav */
 nav {
