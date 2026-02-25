@@ -1,0 +1,2093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vidya Setu — India's Intelligent Education Infrastructure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --saffron: #FF6B00;
+  --deep-saffron: #E05A00;
+  --green: #138808;
+  --deep-green: #0E6606;
+  --blue: #003366;
+  --cream: #FFF8F0;
+  --dark: #0A0A0F;
+  --mid: #1A1A2E;
+  --surface: #16213E;
+  --text: #F0EBE3;
+  --muted: #8A8FA8;
+  --gold: #F5B700;
+  --accent: #FF8C42;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom cursor */
+.cursor {
+  width: 12px; height: 12px;
+  background: var(--saffron);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease;
+  mix-blend-mode: screen;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--saffron);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
+/* Nav */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(10,10,15,0.95) 0%, transparent 100%);
+  backdrop-filter: blur(8px);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-mark {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--saffron), var(--gold));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.logo-mark::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%);
+  animation: shimmer 3s infinite;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.logo-text {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.3px;
+}
+.logo-text span { color: var(--saffron); }
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+  letter-spacing: 0.3px;
+}
+.nav-links a:hover { color: var(--text); }
+
+.nav-cta {
+  background: var(--saffron);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: none;
+  transition: background 0.2s, transform 0.1s;
+}
+.nav-cta:hover { background: var(--deep-saffron); transform: translateY(-1px); }
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 60px 80px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 50%, rgba(255,107,0,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(19,136,8,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 80% at 50% 0%, rgba(0,51,102,0.3) 0%, transparent 60%);
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,107,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,107,0,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 70%);
+}
+
+/* Floating particles */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float linear infinite;
+}
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,107,0,0.1);
+  border: 1px solid rgba(255,107,0,0.2);
+  border-radius: 100px;
+  padding: 6px 16px 6px 6px;
+  margin-bottom: 32px;
+  animation: fadeSlideUp 0.6s ease both;
+}
+
+.badge-dot {
+  width: 20px; height: 20px;
+  background: var(--saffron);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+}
+
+.hero-badge span {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(48px, 6vw, 80px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+  animation: fadeSlideUp 0.6s 0.1s ease both;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--saffron);
+}
+
+.hero-sub {
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 48px;
+  font-weight: 300;
+  animation: fadeSlideUp 0.6s 0.2s ease both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  animation: fadeSlideUp 0.6s 0.3s ease both;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--saffron), var(--deep-saffron));
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 30px rgba(255,107,0,0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(255,107,0,0.4);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 16px 32px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-ghost:hover {
+  border-color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.05);
+}
+
+.hero-visual {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 500px;
+  height: 500px;
+  animation: fadeSlideUp 0.8s 0.4s ease both;
+}
+
+.hero-card-main {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  background: rgba(22,33,62,0.8);
+  border: 1px solid rgba(255,107,0,0.2);
+  border-radius: 20px;
+  padding: 28px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,107,0,0.05) inset;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.ai-avatar {
+  width: 42px; height: 42px;
+  background: linear-gradient(135deg, var(--saffron), var(--gold));
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+
+.card-title-group h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+}
+.card-title-group p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.live-badge {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--green);
+  font-weight: 500;
+}
+.live-dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.msg {
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 85%;
+}
+.msg-user {
+  background: rgba(255,107,0,0.12);
+  border: 1px solid rgba(255,107,0,0.15);
+  align-self: flex-end;
+  color: var(--accent);
+}
+.msg-ai {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  align-self: flex-start;
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  width: fit-content;
+}
+.typing-dot {
+  width: 6px; height: 6px;
+  background: var(--muted);
+  border-radius: 50%;
+  animation: typingDot 1.4s infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typingDot {
+  0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+  40% { transform: scale(1.1); opacity: 1; }
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.stat-mini {
+  text-align: center;
+}
+.stat-mini .val {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--saffron);
+}
+.stat-mini .lbl {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* Floating cards */
+.float-card {
+  position: absolute;
+  background: rgba(22,33,62,0.9);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 14px 18px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.float-card-1 {
+  top: 5%; right: -20px;
+  animation: floatY 4s ease-in-out infinite;
+}
+.float-card-2 {
+  bottom: 10%; left: -10px;
+  animation: floatY 4s 2s ease-in-out infinite;
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-card-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.float-icon {
+  font-size: 22px;
+}
+.float-text p { font-size: 11px; color: var(--muted); }
+.float-text strong { font-size: 13px; font-family: 'Syne', sans-serif; }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Stats bar */
+.stats-bar {
+  background: rgba(22,33,62,0.5);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 28px 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.stat-item {
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 40px;
+  background: linear-gradient(135deg, var(--saffron), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+.stat-label {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+/* Problem section */
+.problem-section {
+  padding: 100px 60px;
+  position: relative;
+}
+
+.section-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--saffron);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+
+.section-sub {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 60px;
+}
+
+.problem-card {
+  background: rgba(22,33,62,0.4);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.problem-card:hover {
+  border-color: rgba(255,107,0,0.25);
+  transform: translateY(-4px);
+}
+
+.problem-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--saffron), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.problem-card:hover::before { opacity: 1; }
+
+.problem-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 60px;
+  font-weight: 800;
+  color: rgba(255,107,0,0.08);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.problem-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.problem-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.problem-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  background: rgba(255,107,0,0.08);
+  border: 1px solid rgba(255,107,0,0.15);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Platform architecture */
+.architecture-section {
+  padding: 100px 60px;
+  background: rgba(22,33,62,0.2);
+  position: relative;
+}
+
+.arch-visual {
+  margin-top: 60px;
+  position: relative;
+}
+
+.arch-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.arch-layer {
+  border-radius: 16px;
+  padding: 24px 32px;
+  border: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  transition: all 0.3s;
+  cursor: none;
+}
+
+.arch-layer:hover {
+  transform: scale(1.01);
+  border-color: rgba(255,107,0,0.2);
+}
+
+.layer-1 { background: linear-gradient(135deg, rgba(255,107,0,0.15), rgba(255,107,0,0.05)); }
+.layer-2 { background: linear-gradient(135deg, rgba(245,183,0,0.12), rgba(245,183,0,0.04)); }
+.layer-3 { background: linear-gradient(135deg, rgba(19,136,8,0.12), rgba(19,136,8,0.04)); }
+.layer-4 { background: linear-gradient(135deg, rgba(0,51,102,0.25), rgba(0,51,102,0.08)); }
+.layer-5 { background: linear-gradient(135deg, rgba(128,0,128,0.12), rgba(128,0,128,0.04)); }
+
+.layer-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  width: 56px; height: 56px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.06);
+  border-radius: 12px;
+}
+
+.layer-info { flex: 1; }
+.layer-info h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+.layer-info p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.layer-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  max-width: 340px;
+}
+
+.tag {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* Features section */
+.features-section {
+  padding: 100px 60px;
+}
+
+.features-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 60px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.feature-card {
+  background: rgba(22,33,62,0.4);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 28px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  border-color: rgba(255,107,0,0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.feature-icon {
+  font-size: 36px;
+  margin-bottom: 18px;
+  display: block;
+}
+
+.feature-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.feature-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.feature-highlight {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--saffron);
+  font-weight: 600;
+}
+
+.feature-card.featured {
+  background: linear-gradient(135deg, rgba(255,107,0,0.12), rgba(255,107,0,0.04));
+  border-color: rgba(255,107,0,0.2);
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.feature-card.featured .feature-visual {
+  background: rgba(255,107,0,0.06);
+  border: 1px solid rgba(255,107,0,0.12);
+  border-radius: 14px;
+  padding: 20px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dashboard UI mockup */
+.dashboard-mini {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.dash-bar {
+  height: 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+.d1 { background: var(--saffron); width: 80%; animation: barGrow 2s 0.1s ease both; }
+.d2 { background: var(--green); width: 65%; animation: barGrow 2s 0.2s ease both; }
+.d3 { background: var(--gold); width: 55%; animation: barGrow 2s 0.3s ease both; }
+.d4 { background: var(--accent); width: 40%; animation: barGrow 2s 0.4s ease both; }
+.d5 { background: rgba(128,0,128,0.6); width: 30%; animation: barGrow 2s 0.5s ease both; }
+
+@keyframes barGrow {
+  from { width: 0; opacity: 0; }
+  to { opacity: 1; }
+}
+
+.dash-labels {
+  position: absolute;
+  right: 0; top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Roadmap */
+.roadmap-section {
+  padding: 100px 60px;
+  background: rgba(22,33,62,0.2);
+}
+
+.timeline {
+  margin-top: 60px;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--saffron), transparent);
+}
+
+.timeline-item {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 48px;
+  align-items: flex-start;
+}
+
+.timeline-dot {
+  width: 48px; height: 48px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  position: relative;
+  z-index: 1;
+  background: var(--dark);
+  border: 2px solid var(--saffron);
+}
+
+.timeline-content {
+  flex: 1;
+  background: rgba(22,33,62,0.4);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 24px;
+  transition: border-color 0.3s;
+}
+.timeline-content:hover { border-color: rgba(255,107,0,0.2); }
+
+.timeline-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.timeline-phase {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.phase-badge {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.phase-active { background: rgba(19,136,8,0.15); color: var(--green); border: 1px solid rgba(19,136,8,0.2); }
+.phase-planning { background: rgba(245,183,0,0.12); color: var(--gold); border: 1px solid rgba(245,183,0,0.2); }
+.phase-future { background: rgba(255,255,255,0.06); color: var(--muted); border: 1px solid rgba(255,255,255,0.1); }
+
+.timeline-content p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.timeline-deliverables {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.deliverable {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--text);
+}
+
+/* Security section */
+.security-section {
+  padding: 100px 60px;
+}
+
+.security-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  margin-top: 60px;
+  align-items: center;
+}
+
+.security-visual {
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shield {
+  width: 200px; height: 200px;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.shield-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255,107,0,0.2);
+  animation: ringExpand 3s ease-in-out infinite;
+}
+.shield-ring:nth-child(1) { width: 200px; height: 200px; animation-delay: 0s; }
+.shield-ring:nth-child(2) { width: 280px; height: 280px; animation-delay: 0.5s; }
+.shield-ring:nth-child(3) { width: 360px; height: 360px; animation-delay: 1s; }
+
+@keyframes ringExpand {
+  0%, 100% { transform: scale(0.95); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 0.2; }
+}
+
+.shield-core {
+  width: 120px; height: 120px;
+  background: linear-gradient(135deg, rgba(255,107,0,0.2), rgba(255,107,0,0.05));
+  border: 2px solid rgba(255,107,0,0.4);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
+  position: relative;
+  z-index: 1;
+  animation: shieldPulse 3s ease-in-out infinite;
+}
+@keyframes shieldPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(255,107,0,0.2); }
+  50% { box-shadow: 0 0 50px rgba(255,107,0,0.4); }
+}
+
+.security-nodes {
+  position: absolute;
+  inset: 0;
+}
+
+.sec-node {
+  position: absolute;
+  width: 44px; height: 44px;
+  background: rgba(22,33,62,0.9);
+  border: 1px solid rgba(255,107,0,0.2);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  animation: nodeFloat 4s ease-in-out infinite;
+}
+.sec-node:nth-child(1) { top: 5%; left: 50%; transform: translateX(-50%); }
+.sec-node:nth-child(2) { top: 50%; right: 5%; animation-delay: 0.5s; }
+.sec-node:nth-child(3) { bottom: 5%; left: 50%; transform: translateX(-50%); animation-delay: 1s; }
+.sec-node:nth-child(4) { top: 50%; left: 5%; animation-delay: 1.5s; }
+
+@keyframes nodeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.security-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sec-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.sec-item-icon {
+  width: 42px; height: 42px;
+  flex-shrink: 0;
+  background: rgba(255,107,0,0.08);
+  border: 1px solid rgba(255,107,0,0.12);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+
+.sec-item h4 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.sec-item p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* CTA */
+.cta-section {
+  padding: 100px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,107,0,0.08) 0%, transparent 70%);
+}
+
+.cta-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-section h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(40px, 5vw, 60px);
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+/* India map decoration */
+.tricolor-bar {
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--saffron) 33%, white 33%, white 66%, var(--green) 66%);
+  opacity: 0.6;
+}
+
+/* Footer */
+footer {
+  background: rgba(10,10,15,0.8);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 40px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-brand .logo-text {
+  font-size: 16px;
+}
+
+.footer-brand p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 32px;
+}
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--text); }
+
+.footer-right {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Scroll animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tab system for dashboard */
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  padding: 4px;
+}
+.tab {
+  flex: 1;
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: none;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.tab.active {
+  background: rgba(255,107,0,0.15);
+  color: var(--saffron);
+}
+
+.dashboard-section {
+  padding: 100px 60px;
+  background: rgba(22,33,62,0.15);
+}
+
+.dashboard-mockup {
+  background: rgba(10,10,15,0.8);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 60px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+}
+
+.dash-topbar {
+  background: rgba(22,33,62,0.9);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.dash-dots {
+  display: flex;
+  gap: 6px;
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-r { background: #FF5F57; }
+.dot-y { background: #FEBC2E; }
+.dot-g { background: #28C840; }
+
+.dash-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0 auto;
+}
+
+.dash-body {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 500px;
+}
+
+.dash-sidebar {
+  background: rgba(22,33,62,0.5);
+  border-right: 1px solid rgba(255,255,255,0.05);
+  padding: 20px;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.sidebar-logo .logo-mark { width: 32px; height: 32px; font-size: 14px; border-radius: 8px; }
+.sidebar-logo span {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.sidebar-nav { list-style: none; }
+.sidebar-nav li {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2px;
+  cursor: none;
+  transition: background 0.2s;
+  color: var(--muted);
+}
+.sidebar-nav li:hover, .sidebar-nav li.active {
+  background: rgba(255,107,0,0.1);
+  color: var(--saffron);
+}
+.sidebar-nav li.active { color: var(--saffron); font-weight: 600; }
+
+.dash-main { padding: 28px; }
+
+.dash-welcome {
+  margin-bottom: 28px;
+}
+.dash-welcome h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.dash-welcome p { color: var(--muted); font-size: 13px; }
+
+.dash-metric-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dash-metric {
+  background: rgba(22,33,62,0.6);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 18px;
+}
+.dash-metric-label {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.dash-metric-val {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 26px;
+  color: var(--saffron);
+  line-height: 1;
+}
+.dash-metric-sub {
+  font-size: 11px;
+  color: var(--green);
+  margin-top: 4px;
+}
+
+.dash-grid-2 {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 16px;
+}
+
+.dash-chart-area, .dash-activity {
+  background: rgba(22,33,62,0.5);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.chart-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 120px;
+}
+
+.ch-bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(to top, var(--saffron), rgba(255,107,0,0.3));
+  transition: all 0.3s;
+  position: relative;
+}
+.ch-bar:hover { filter: brightness(1.2); }
+
+.ch-bar-2 { background: linear-gradient(to top, var(--green), rgba(19,136,8,0.3)); }
+
+.chart-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+.chart-footer span {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.activity-list { list-style: none; }
+.activity-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 12px;
+}
+.activity-list li:last-child { border: none; }
+.act-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.act-text { flex: 1; color: var(--muted); }
+.act-time { color: var(--muted); font-size: 10px; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .hero-visual { display: none; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .features-intro { grid-template-columns: 1fr; gap: 20px; }
+  .feature-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+  .security-grid { grid-template-columns: 1fr; }
+  .security-visual { height: 250px; }
+  .dashboard-section { display: none; }
+  nav { padding: 16px 24px; }
+  nav .nav-links { display: none; }
+  .hero { padding: 100px 24px 60px; }
+  .stats-bar { grid-template-columns: repeat(2,1fr); padding: 24px; }
+  .problem-section, .features-section, .security-section, .roadmap-section, .architecture-section, .cta-section { padding: 60px 24px; }
+  footer { flex-direction: column; gap: 24px; text-align: center; padding: 32px 24px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .dash-body { grid-template-columns: 1fr; }
+  .dash-sidebar { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Particles -->
+<div id="particles"></div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-logo">
+    <div class="logo-mark">VS</div>
+    <span class="logo-text">Vidya<span>Setu</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#platform">Platform</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#security">Security</a></li>
+  </ul>
+  <button class="nav-cta">Request Access</button>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="badge-dot">🇮🇳</div>
+      <span>Built for Bharat · Serving 250M+ Students</span>
+    </div>
+
+    <h1>
+      Bridging India's<br><em>Education Divide</em><br>with AI
+    </h1>
+
+    <p class="hero-sub">
+      Vidya Setu is a scalable, secure, AI-native digital infrastructure platform designed to democratize quality education across India's 600,000+ villages — from adaptive learning to offline-first delivery.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn-primary">Explore Platform →</button>
+      <button class="btn-ghost">View Architecture</button>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card-main">
+      <div class="card-header">
+        <div class="ai-avatar">🎓</div>
+        <div class="card-title-group">
+          <h3>Vidya AI Tutor</h3>
+          <p>Adaptive · Multilingual · Offline-capable</p>
+        </div>
+        <div class="live-badge">
+          <div class="live-dot"></div> Live
+        </div>
+      </div>
+      <div class="chat-messages">
+        <div class="msg msg-user">Quadratic equation समझाओ Hindi में</div>
+        <div class="msg msg-ai">बिल्कुल! एक quadratic equation का रूप है: ax² + bx + c = 0 जहाँ a ≠ 0. इसे हल करने के लिए हम quadratic formula का उपयोग करते हैं...</div>
+        <div class="typing-indicator">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-mini">
+          <div class="val">22</div>
+          <div class="lbl">Languages</div>
+        </div>
+        <div class="stat-mini">
+          <div class="val">94%</div>
+          <div class="lbl">Accuracy</div>
+        </div>
+        <div class="stat-mini">
+          <div class="val">0ms</div>
+          <div class="lbl">Offline lag</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="float-card float-card-1">
+      <div class="float-card-content">
+        <div class="float-icon">📡</div>
+        <div class="float-text">
+          <strong>Offline Sync</strong>
+          <p>Works without internet</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="float-card float-card-2">
+      <div class="float-card-content">
+        <div class="float-icon">🧠</div>
+        <div class="float-text">
+          <strong>AI Personalization</strong>
+          <p>Adapts to each student</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats bar -->
+<div class="stats-bar">
+  <div class="stat-item reveal">
+    <div class="stat-num">250M+</div>
+    <div class="stat-label">Students targeted across India</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">22</div>
+    <div class="stat-label">Official Indian languages supported</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">600K+</div>
+    <div class="stat-label">Villages to be connected</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">99.9%</div>
+    <div class="stat-label">Platform uptime SLA</div>
+  </div>
+</div>
+
+<!-- Problem Section -->
+<section class="problem-section" id="problem">
+  <div class="section-label reveal">The Challenge</div>
+  <h2 class="section-title reveal">India's education crisis<br>is a <em style="color:var(--saffron);font-style:italic;">systems problem</em></h2>
+  <p class="section-sub reveal">Despite being the world's largest democracy and a rising tech power, India's education system faces structural inequities that no single intervention can fix. Vidya Setu addresses all of them simultaneously.</p>
+
+  <div class="problem-grid">
+    <div class="problem-card reveal">
+      <div class="problem-num">01</div>
+      <h3>The Digital Divide</h3>
+      <p>Over 600 million Indians in rural areas have limited or no reliable internet connectivity. Schools in Tier 3–4 cities and villages lack even basic digital infrastructure, creating a two-tiered education system.</p>
+      <div class="problem-stat">📊 Only 29% rural schools have functional computers</div>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-num">02</div>
+      <h3>Language Fragmentation</h3>
+      <p>India has 22 official languages and 780+ dialects. Most quality digital education content exists only in English or Hindi, leaving hundreds of millions of students without content in their mother tongue.</p>
+      <div class="problem-stat">🗣 78% students learn best in regional languages</div>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-num">03</div>
+      <h3>Teacher Shortage & Quality</h3>
+      <p>India has a shortage of 1.2 million trained teachers, especially in STEM subjects. Rural schools often have single-teacher classrooms managing 60+ students across multiple grades simultaneously.</p>
+      <div class="problem-stat">👩‍🏫 1.2M teacher vacancy gap nationally</div>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-num">04</div>
+      <h3>Learning Outcome Gaps</h3>
+      <p>ASER 2023 data shows 50%+ of Class 5 students cannot read a Class 2 text. Traditional rote-learning systems don't identify or address individual learning gaps at scale, leading to systemic underperformance.</p>
+      <div class="problem-stat">📉 50%+ students 3 grade levels behind</div>
+    </div>
+  </div>
+</section>
+
+<!-- Architecture -->
+<section class="architecture-section" id="platform">
+  <div class="section-label reveal">Technical Architecture</div>
+  <h2 class="section-title reveal">A platform built for<br>India-scale <em style="color:var(--saffron);font-style:italic;">resilience</em></h2>
+  <p class="section-sub reveal">Five interconnected layers designed to work even in the most connectivity-constrained environments, with security and scalability built in from day one.</p>
+
+  <div class="arch-visual reveal">
+    <div class="arch-layers">
+      <div class="arch-layer layer-1">
+        <div class="layer-icon">🤖</div>
+        <div class="layer-info">
+          <h3>AI & Intelligence Layer</h3>
+          <p>Adaptive learning engine, multilingual NLP, content personalization, student performance prediction, and anomaly detection — all running via quantized edge models.</p>
+        </div>
+        <div class="layer-tags">
+          <span class="tag">LLM (Edge-optimized)</span>
+          <span class="tag">RAG Pipeline</span>
+          <span class="tag">ASR (22 langs)</span>
+          <span class="tag">Knowledge Graph</span>
+          <span class="tag">Federated ML</span>
+        </div>
+      </div>
+
+      <div class="arch-layer layer-2">
+        <div class="layer-icon">🌐</div>
+        <div class="layer-info">
+          <h3>Application & API Layer</h3>
+          <p>RESTful and GraphQL APIs powering the student app, teacher dashboard, parent portal, and admin console. Built as microservices with event-driven architecture for extreme scale.</p>
+        </div>
+        <div class="layer-tags">
+          <span class="tag">Microservices</span>
+          <span class="tag">GraphQL</span>
+          <span class="tag">WebSocket</span>
+          <span class="tag">gRPC</span>
+          <span class="tag">API Gateway</span>
+        </div>
+      </div>
+
+      <div class="arch-layer layer-3">
+        <div class="layer-icon">📡</div>
+        <div class="layer-info">
+          <h3>Offline-First Sync Layer</h3>
+          <p>Progressive Web App architecture with service workers, local SQLite, and intelligent delta sync. Students can access full curriculum offline; sync happens when connectivity is available.</p>
+        </div>
+        <div class="layer-tags">
+          <span class="tag">PWA + Service Workers</span>
+          <span class="tag">CRDTs</span>
+          <span class="tag">Delta Sync</span>
+          <span class="tag">SQLite (local)</span>
+          <span class="tag">Mesh networking</span>
+        </div>
+      </div>
+
+      <div class="arch-layer layer-4">
+        <div class="layer-icon">🗃️</div>
+        <div class="layer-info">
+          <h3>Data & Storage Layer</h3>
+          <p>Distributed PostgreSQL clusters across 5 Indian data centers (Delhi, Mumbai, Chennai, Kolkata, Hyderabad). Data residency compliance with DPDP Act 2023. Encrypted at rest and in transit.</p>
+        </div>
+        <div class="layer-tags">
+          <span class="tag">PostgreSQL Clusters</span>
+          <span class="tag">Redis Cache</span>
+          <span class="tag">MinIO (media)</span>
+          <span class="tag">DPDP Compliant</span>
+          <span class="tag">AES-256</span>
+        </div>
+      </div>
+
+      <div class="arch-layer layer-5">
+        <div class="layer-icon">☁️</div>
+        <div class="layer-info">
+          <h3>Infrastructure & DevOps Layer</h3>
+          <p>Multi-region Kubernetes deployment on Indian cloud (NIC Cloud + AWS Mumbai). Auto-scaling handles 10x traffic spikes during exam seasons. GitOps CI/CD with zero-downtime deployments.</p>
+        </div>
+        <div class="layer-tags">
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Terraform IaC</span>
+          <span class="tag">GitOps</span>
+          <span class="tag">Prometheus + Grafana</span>
+          <span class="tag">NIC Cloud</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dashboard mockup -->
+<section class="dashboard-section">
+  <div class="section-label reveal">Platform Interface</div>
+  <h2 class="section-title reveal">One intelligent dashboard.<br>Every stakeholder<em style="color:var(--saffron);font-style:italic;">.</em></h2>
+
+  <div class="dashboard-mockup reveal">
+    <div class="dash-topbar">
+      <div class="dash-dots">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+      </div>
+      <div class="dash-title">Vidya Setu — District Admin Dashboard · Pune District</div>
+    </div>
+    <div class="dash-body">
+      <div class="dash-sidebar">
+        <div class="sidebar-logo">
+          <div class="logo-mark">VS</div>
+          <span>VidyaSetu</span>
+        </div>
+        <ul class="sidebar-nav">
+          <li class="active">📊 Overview</li>
+          <li>🎓 Students</li>
+          <li>👩‍🏫 Teachers</li>
+          <li>📚 Curriculum</li>
+          <li>📡 Connectivity</li>
+          <li>🧠 AI Insights</li>
+          <li>🔒 Security</li>
+          <li>⚙️ Settings</li>
+        </ul>
+      </div>
+      <div class="dash-main">
+        <div class="dash-welcome">
+          <h2>Good morning, District Commissioner Sharma 👋</h2>
+          <p>Here's how Pune district's 1,247 schools are performing today — Wednesday, 25 Feb 2026</p>
+        </div>
+
+        <div class="dash-metric-row">
+          <div class="dash-metric">
+            <div class="dash-metric-label">Active Students</div>
+            <div class="dash-metric-val">2.4L</div>
+            <div class="dash-metric-sub">↑ 12% from last month</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dash-metric-label">Avg Learning Score</div>
+            <div class="dash-metric-val">78%</div>
+            <div class="dash-metric-sub">↑ 6pts vs baseline</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dash-metric-label">Schools Online</div>
+            <div class="dash-metric-val">1,231</div>
+            <div class="dash-metric-sub">↑ 98.7% connectivity</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dash-metric-label">AI Sessions Today</div>
+            <div class="dash-metric-val">48K</div>
+            <div class="dash-metric-sub">↑ Peak: 6,200/hr</div>
+          </div>
+        </div>
+
+        <div class="dash-grid-2">
+          <div class="dash-chart-area">
+            <div class="chart-title">Learning Outcomes by Grade (Weekly)</div>
+            <div class="chart-bars">
+              <div class="ch-bar" style="height:65%"></div>
+              <div class="ch-bar ch-bar-2" style="height:72%"></div>
+              <div class="ch-bar" style="height:58%"></div>
+              <div class="ch-bar ch-bar-2" style="height:81%"></div>
+              <div class="ch-bar" style="height:70%"></div>
+              <div class="ch-bar ch-bar-2" style="height:88%"></div>
+              <div class="ch-bar" style="height:75%"></div>
+            </div>
+            <div class="chart-footer">
+              <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+            </div>
+          </div>
+
+          <div class="dash-activity">
+            <div class="chart-title">Live Activity</div>
+            <ul class="activity-list">
+              <li>
+                <div class="act-dot" style="background:var(--green)"></div>
+                <div class="act-text">Class 8B completed Math module — Aurangabad HS</div>
+                <div class="act-time">2m ago</div>
+              </li>
+              <li>
+                <div class="act-dot" style="background:var(--saffron)"></div>
+                <div class="act-text">AI flagged 23 at-risk students in Nashik cluster</div>
+                <div class="act-time">8m ago</div>
+              </li>
+              <li>
+                <div class="act-dot" style="background:var(--gold)"></div>
+                <div class="act-text">Offline sync completed — Igatpuri block (87 schools)</div>
+                <div class="act-time">15m ago</div>
+              </li>
+              <li>
+                <div class="act-dot" style="background:var(--green)"></div>
+                <div class="act-text">Teacher training batch uploaded — Malegaon</div>
+                <div class="act-time">31m ago</div>
+              </li>
+              <li>
+                <div class="act-dot" style="background:rgba(128,0,128,0.7)"></div>
+                <div class="act-text">New Marathi content pack deployed — 1.2GB</div>
+                <div class="act-time">1h ago</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features-section" id="features">
+  <div class="features-intro">
+    <div>
+      <div class="section-label reveal">Core Features</div>
+      <h2 class="section-title reveal">Every feature designed<br>for <em style="color:var(--saffron);font-style:italic;">Bharat first</em></h2>
+    </div>
+    <p class="section-sub reveal" style="margin-bottom:0;">Not a Western product retrofitted for India. Vidya Setu is designed ground-up for low-bandwidth environments, multilingual populations, and India's regulatory landscape.</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card featured reveal">
+      <div>
+        <span class="feature-icon">🧠</span>
+        <h3>AI-Powered Adaptive Learning Engine</h3>
+        <p>Our federated learning system builds personalized learning paths for each student without sending raw data to servers. Models run on-device using ONNX-quantized versions — works on ₹5,000 Android devices with 2GB RAM.</p>
+        <div class="feature-highlight">⚡ 40% better learning outcomes vs traditional delivery</div>
+      </div>
+      <div class="feature-visual">
+        <div class="dashboard-mini">
+          <p style="font-size:11px;color:var(--muted);margin-bottom:10px;">Student Progress — Anjali, Class 6 · Wardha</p>
+          <div class="dash-bar d1"></div>
+          <p style="font-size:9px;color:var(--muted);margin-bottom:6px;">Mathematics: Advanced</p>
+          <div class="dash-bar d2"></div>
+          <p style="font-size:9px;color:var(--muted);margin-bottom:6px;">Science: Proficient</p>
+          <div class="dash-bar d3"></div>
+          <p style="font-size:9px;color:var(--muted);margin-bottom:6px;">Hindi: On Track</p>
+          <div class="dash-bar d4"></div>
+          <p style="font-size:9px;color:var(--muted);margin-bottom:6px;">Social Studies: Needs support</p>
+          <div class="dash-bar d5"></div>
+          <p style="font-size:9px;color:var(--muted);">English: Beginner → guided path active</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card reveal">
+      <span class="feature-icon">📡</span>
+      <h3>Offline-First Architecture</h3>
+      <p>Complete curriculum access without internet. Content is synced during connectivity windows (even 2G) using delta compression. Students in no-network zones get the full experience via mesh WiFi from school access points.</p>
+      <div class="feature-highlight">🌐 Works on 2G · 100% content offline</div>
+    </div>
+
+    <div class="feature-card reveal">
+      <span class="feature-icon">🗣️</span>
+      <h3>22-Language Multilingual Platform</h3>
+      <p>Full platform UI, AI tutor, and curriculum content in all 22 Schedule 8 languages. Auto-translation pipeline with human review ensures regional accuracy. Voice input via ASR for students who can't type fluently.</p>
+      <div class="feature-highlight">🎙 Voice-first UI for low-literacy parents</div>
+    </div>
+
+    <div class="feature-card reveal">
+      <span class="feature-icon">👩‍🏫</span>
+      <h3>AI Teacher Assistant</h3>
+      <p>Empowers India's overwhelmed teachers with AI that handles routine Q&A, grading of objective questions, and learning gap identification — freeing teachers to focus on mentorship and complex teaching.</p>
+      <div class="feature-highlight">⏱ Saves 3+ hrs/day per teacher</div>
+    </div>
+
+    <div class="feature-card reveal">
+      <span class="feature-icon">📊</span>
+      <h3>Government Analytics Dashboard</h3>
+      <p>District and state education departments get real-time visibility into learning outcomes, dropout risk, school performance, and teacher effectiveness — enabling data-driven policy at scale.</p>
+      <div class="feature-highlight">🏛 DIKSHA & NAS integration built-in</div>
+    </div>
+
+    <div class="feature-card reveal">
+      <span class="feature-icon">👨‍👩‍👧</span>
+      <h3>Parent & Community Portal</h3>
+      <p>WhatsApp-integrated updates for parents on their child's progress in their regional language. Community teachers and local volunteers can contribute localized content through a structured review pipeline.</p>
+      <div class="feature-highlight">💬 WhatsApp-native, no app needed</div>
+    </div>
+  </div>
+</section>
+
+<!-- Roadmap -->
+<section class="roadmap-section" id="roadmap">
+  <div class="section-label reveal">Deployment Roadmap</div>
+  <h2 class="section-title reveal">From pilot to<br><em style="color:var(--saffron);font-style:italic;">national scale</em></h2>
+  <p class="section-sub reveal">A phased approach that validates impact before scaling, ensuring we build the right thing for India's diverse educational contexts.</p>
+
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-dot">🚀</div>
+      <div class="timeline-content">
+        <div class="timeline-meta">
+          <span class="timeline-phase">Phase 1 — Foundation & Pilot</span>
+          <span class="phase-badge phase-active">Active · Q1 2025</span>
+        </div>
+        <p>Launch in 3 pilot districts (Wardha, MH; Rae Bareli, UP; Kalahandi, OD) — specifically chosen for diversity in language, connectivity, and socioeconomic profile. 500 schools, 100K students. Build feedback loops with ground-level stakeholders.</p>
+        <div class="timeline-deliverables">
+          <span class="deliverable">Core PWA</span>
+          <span class="deliverable">Hindi + Marathi + Odia</span>
+          <span class="deliverable">Offline sync v1</span>
+          <span class="deliverable">Teacher dashboard</span>
+          <span class="deliverable">ASER baseline integration</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">📈</div>
+      <div class="timeline-content">
+        <div class="timeline-meta">
+          <span class="timeline-phase">Phase 2 — State Rollout</span>
+          <span class="phase-badge phase-planning">Planning · Q3 2025</span>
+        </div>
+        <p>Expand to 3 full states (Maharashtra, Uttar Pradesh, Odisha) with 50,000+ schools. Integrate with State Education Portals and DIKSHA platform. Launch government analytics dashboard. 12-language support.</p>
+        <div class="timeline-deliverables">
+          <span class="deliverable">12 languages</span>
+          <span class="deliverable">State portal integration</span>
+          <span class="deliverable">AI tutor v2</span>
+          <span class="deliverable">Parent WhatsApp</span>
+          <span class="deliverable">50K schools</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">🌏</div>
+      <div class="timeline-content">
+        <div class="timeline-meta">
+          <span class="timeline-phase">Phase 3 — National Scale</span>
+          <span class="phase-badge phase-future">Planned · Q2 2026</span>
+        </div>
+        <p>Full national deployment across all 28 states and 8 UTs. All 22 official languages. Integration with NEP 2020 curriculum framework, DigiLocker, and APAAR student ID system. Target: 100M active students.</p>
+        <div class="timeline-deliverables">
+          <span class="deliverable">22 languages</span>
+          <span class="deliverable">APAAR integration</span>
+          <span class="deliverable">100M students</span>
+          <span class="deliverable">Federated AI v3</span>
+          <span class="deliverable">600K+ schools</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">🌟</div>
+      <div class="timeline-content">
+        <div class="timeline-meta">
+          <span class="timeline-phase">Phase 4 — Global South Expansion</span>
+          <span class="phase-badge phase-future">Vision · 2027+</span>
+        </div>
+        <p>Open-source the core platform for adaptation by other Global South nations (Bangladesh, Nepal, Sub-Saharan Africa). Establish a multilateral open education infrastructure consortium under UNESCO framework.</p>
+        <div class="timeline-deliverables">
+          <span class="deliverable">Open-source core</span>
+          <span class="deliverable">UNESCO partnership</span>
+          <span class="deliverable">Multi-nation API</span>
+          <span class="deliverable">Global South SDK</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Security -->
+<section class="security-section" id="security">
+  <div class="section-label reveal">Trust & Security</div>
+  <h2 class="section-title reveal">Child-safe.<br><em style="color:var(--saffron);font-style:italic;">Privacy-first.</em><br>Sovereign.</h2>
+  <p class="section-sub reveal">Handling data of 250M+ minors demands the highest security standards. Vidya Setu is built on a zero-trust architecture, fully compliant with India's DPDP Act 2023.</p>
+
+  <div class="security-grid reveal">
+    <div class="security-visual">
+      <div class="shield-ring"></div>
+      <div class="shield-ring"></div>
+      <div class="shield-ring"></div>
+      <div class="security-nodes">
+        <div class="sec-node">🔐</div>
+        <div class="sec-node">🛡️</div>
+        <div class="sec-node">🔏</div>
+        <div class="sec-node">🔑</div>
+      </div>
+      <div class="shield">
+        <div class="shield-core">🏛️</div>
+      </div>
+    </div>
+
+    <div class="security-list">
+      <div class="sec-item">
+        <div class="sec-item-icon">🔐</div>
+        <div>
+          <h4>Zero-Trust Architecture</h4>
+          <p>Every API call authenticated with short-lived JWT + mTLS. No implicit trust between services. Role-based access control (RBAC) with principle of least privilege across all 6 user roles.</p>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-item-icon">🧒</div>
+        <div>
+          <h4>COPPA & DPDP Act 2023 Compliance</h4>
+          <p>No behavioral advertising. No third-party data sharing. Parental consent flows built into onboarding. Student data is the student's data — deletable on request with automated data purge pipelines.</p>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-item-icon">🇮🇳</div>
+        <div>
+          <h4>Data Sovereignty</h4>
+          <p>All student data stored exclusively in India (NIC MeghRaj cloud + AWS Mumbai). No cross-border data transfer. Encrypts data at rest (AES-256) and in transit (TLS 1.3). Key management via India KMS.</p>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-item-icon">🛡️</div>
+        <div>
+          <h4>AI Safety & Content Moderation</h4>
+          <p>All AI-generated content passes through a 3-layer safety pipeline: automated classifier → NCERT curriculum alignment check → human review queue for edge cases. No harmful content can reach students.</p>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-item-icon">🔎</div>
+        <div>
+          <h4>Continuous Security Monitoring</h4>
+          <p>24/7 SOC with automated threat detection via SIEM. Bug bounty program with ₹10L+ rewards. Annual third-party pen testing mandated. CERT-In reporting integration for incident response.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tricolor bar -->
+<div class="tricolor-bar"></div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <div class="section-label">Join the Mission</div>
+    <h2>Let's build an <em style="font-style:italic;color:var(--saffron)">educated India</em> together</h2>
+    <p>Whether you're a state government, an NGO, a teacher, or a technologist — there's a role for you in making quality education accessible to every Indian child, regardless of where they were born.</p>
+    <div class="cta-actions">
+      <button class="btn-primary">Partner With Us</button>
+      <button class="btn-ghost">Technical Docs →</button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-brand">
+    <div class="nav-logo">
+      <div class="logo-mark">VS</div>
+      <span class="logo-text">Vidya<span>Setu</span></span>
+    </div>
+    <p>Digital infrastructure for India's education future</p>
+  </div>
+  <div class="footer-links">
+    <a href="#">Architecture</a>
+    <a href="#">API Docs</a>
+    <a href="#">Open Source</a>
+    <a href="#">Research</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">DPDP Compliance</a>
+  </div>
+  <div class="footer-right">
+    Built with ❤️ for Bharat · 2025–2026
+  </div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0;
+let ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursor.style.left = mouseX - 6 + 'px';
+  cursor.style.top = mouseY - 6 + 'px';
+});
+
+function animateRing() {
+  ringX += (mouseX - ringX - 18) * 0.12;
+  ringY += (mouseY - ringY - 18) * 0.12;
+  cursorRing.style.left = ringX + 'px';
+  cursorRing.style.top = ringY + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('button, a, .arch-layer, .feature-card, .problem-card, .timeline-content').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.transform = 'scale(2)';
+    cursorRing.style.transform = 'scale(1.5)';
+    cursorRing.style.borderColor = 'var(--saffron)';
+    cursorRing.style.opacity = '0.8';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.transform = 'scale(1)';
+    cursorRing.style.transform = 'scale(1)';
+    cursorRing.style.borderColor = 'var(--saffron)';
+    cursorRing.style.opacity = '0.5';
+  });
+});
+
+// Particles
+const particleContainer = document.getElementById('particles');
+const colors = ['#FF6B00', '#138808', '#F5B700', '#003366'];
+
+for (let i = 0; i < 20; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  const size = Math.random() * 4 + 2;
+  p.style.cssText = `
+    width: ${size}px;
+    height: ${size}px;
+    left: ${Math.random() * 100}%;
+    background: ${colors[Math.floor(Math.random() * colors.length)]};
+    opacity: ${Math.random() * 0.4 + 0.1};
+    animation-duration: ${Math.random() * 20 + 15}s;
+    animation-delay: ${Math.random() * 20}s;
+  `;
+  particleContainer.appendChild(p);
+}
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Animated counter for stats
+function animateCounter(el, target, suffix = '') {
+  let current = 0;
+  const increment = target / 60;
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
+    }
+    if (target > 1000) {
+      el.textContent = Math.floor(current / 1000) + 'K+' + suffix;
+    } else {
+      el.textContent = Math.floor(current) + suffix;
+    }
+  }, 16);
+}
+
+// Sidebar nav interaction
+document.querySelectorAll('.sidebar-nav li').forEach(li => {
+  li.addEventListener('click', () => {
+    document.querySelectorAll('.sidebar-nav li').forEach(l => l.classList.remove('active'));
+    li.classList.add('active');
+  });
+});
+
+// Typing animation reset
+function resetTyping() {
+  const typing = document.querySelector('.typing-indicator');
+  const messages = document.querySelector('.chat-messages');
+  if (!typing || !messages) return;
+
+  setTimeout(() => {
+    const newMsg = document.createElement('div');
+    newMsg.className = 'msg msg-ai';
+    newMsg.style.opacity = '0';
+    newMsg.style.transition = 'opacity 0.5s';
+    newMsg.textContent = 'x = (-b ± √(b²-4ac)) / 2a — यह formula है। आइए एक example से समझते हैं...';
+    typing.before(newMsg);
+    setTimeout(() => newMsg.style.opacity = '1', 100);
+    typing.style.display = 'none';
+    setTimeout(() => {
+      typing.style.display = 'flex';
+      newMsg.remove();
+    }, 5000);
+  }, 3000);
+}
+resetTyping();
+setInterval(resetTyping, 8000);
+</script>
+</body>
+</html>
