@@ -1,34 +1,4 @@
 
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  cursor.style.left = mouseX - 6 + 'px';
-  cursor.style.top = mouseY - 6 + 'px';
-});
-
-function animateRing() {
-  ringX += (mouseX - ringX - 18) * 0.12;
-  ringY += (mouseY - ringY - 18) * 0.12;
-  cursorRing.style.left = ringX + 'px';
-  cursorRing.style.top = ringY + 'px';
-  requestAnimationFrame(animateRing);
-}
-animateRing();
-
-document.querySelectorAll('button, a, .arch-layer, .feature-card, .problem-card, .timeline-content').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.transform = 'scale(2)';
-    cursorRing.style.transform = 'scale(1.5)';
-    cursorRing.style.borderColor = 'var(--saffron)';
-    cursorRing.style.opacity = '0.8';
-  });
-  el.addEventListener('mouseleave', () => {
-    cursor.style.transform = 'scale(1)';
-    cursorRing.style.transform = 'scale(1)';
-    cursorRing.style.borderColor = 'var(--saffron)';
-    cursorRing.style.opacity = '0.5';
-  });
-});
 
 // Particles
 const particleContainer = document.getElementById('particles');
