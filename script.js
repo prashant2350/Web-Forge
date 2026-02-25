@@ -1,8 +1,3 @@
-// Custom cursor
-const cursor = document.getElementById('cursor');
-const cursorRing = document.getElementById('cursorRing');
-let mouseX = 0, mouseY = 0;
-let ringX = 0, ringY = 0;
 
 document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
