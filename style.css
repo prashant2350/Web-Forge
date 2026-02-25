@@ -23,7 +23,7 @@ body {
   background: var(--dark);
   color: var(--text);
   overflow-x: hidden;
-  cursor: none;
+  
 }
 
 
