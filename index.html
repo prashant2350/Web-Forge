@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vidya Setu — India's Intelligent Education Infrastructure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Particles -->
+<div id="particles"></div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-logo">
+    <div class="logo-mark">VS</div>
+    <span class="logo-text">Vidya<span>Setu</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#platform">Platform</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#security">Security</a></li>
+  </ul>
+  <button class="nav-cta">Request Access</button>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="badge-dot">🇮🇳</div>
+      <span>Built for Bharat · Serving 250M+ Students</span>
+    </div>
+
+    <h1>
+      Bridging India's<br><em>Education Divide</em><br>with AI
+    </h1>
+
+    <p class="hero-sub">
+      Vidya Setu is a scalable, secure, AI-native digital infrastructure platform designed to democratize quality education across India's 600,000+ villages — from adaptive learning to offline-first delivery.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn-primary">Explore Platform →</button>
+      <button class="btn-ghost">View Architecture</button>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card-main">
+      <div class="card-header">
+        <div class="ai-avatar">🎓</div>
+        <div class="card-title-group">
+          <h3>Vidya AI Tutor</h3>
+          <p>Adaptive · Multilingual · Offline-capable</p>
+        </div>
+        <div class="live-badge">
+          <div class="live-dot"></div> Live
+        </div>
+      </div>
+      <div class="chat-messages">
+        <div class="msg msg-user">Quadratic equation समझाओ Hindi में</div>
+        <div class="msg msg-ai">बिल्कुल! एक quadratic equation का रूप है: ax² + bx + c = 0 जहाँ a ≠ 0. इसे हल करने के लिए हम quadratic formula का उपयोग करते हैं...</div>
+        <div class="typing-indicator">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-mini">
+          <div class="val">22</div>
+          <div class="lbl">Languages</div>
+        </div>
+        <div class="stat-mini">
+          <div class="val">94%</div>
+          <div class="lbl">Accuracy</div>
+        </div>
+        <div class="stat-mini">
+          <div class="val">0ms</div>
+          <div class="lbl">Offline lag</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="float-card float-card-1">
+      <div class="float-card-content">
+        <div class="float-icon">📡</div>
+        <div class="float-text">
+          <strong>Offline Sync</strong>
+          <p>Works without internet</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="float-card float-card-2">
+      <div class="float-card-content">
+        <div class="float-icon">🧠</div>
+        <div class="float-text">
+          <strong>AI Personalization</strong>
+          <p>Adapts to each student</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats bar -->
+<div class="stats-bar">
+  <div class="stat-item reveal">
+    <div class="stat-num">250M+</div>
+    <div class="stat-label">Students targeted across India</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">22</div>
+    <div class="stat-label">Official Indian languages supported</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">600K+</div>
+    <div class="stat-label">Villages to be connected</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">99.9%</div>
+    <div class="stat-label">Platform uptime SLA</div>
+  </div>
+</div>
+
+<!-- Problem Section -->
+<section class="problem-section" id="problem">
+  <div class="section-label reveal">The Challenge</div>
+  <h2 class="section-title reveal">India's education crisis<br>is a <em style="color:var(--saffron);font-style:italic;">systems problem</em></h2>
+  <p class="section-sub reveal">Despite being the world's largest democracy and a rising tech power, India's education system faces structural inequities that no single intervention can fix. Vidya Setu addresses all of them simultaneously.</p>
+
+  <div class="problem-grid">
+    <div class="problem-card reveal">
+      <div class="problem-num">01</div>
+      <h3>The Digital Divide</h3>
+      <p>Over 600 million Indians in rural areas have limited or no reliable internet connectivity. Schools in Tier 3–4 cities and villages lack even basic digital infrastructure, creating a two-tiered education system.</p>
+      <div class="problem-stat">📊 Only 29% rural schools have functional computers</div>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-num">02</div>
+      <h3>Language Fragmentation</h3>
+      <p>India has 22 official languages and 780+ dialects. Most quality digital education content exists only in English or Hindi, leaving hundreds of millions of students without content in their mother tongue.</p>
+      <div class="problem-stat">🗣 78% students learn best in regional languages</div>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-num">03</div>
+      <h3>Teacher Shortage & Quality</h3>
+      <p>India has a shortage of 1.2 million trained teachers, especially in STEM subjects. Rural schools often have single-teacher classrooms managing 60+ students across multiple grades simultaneously.</p>
+      <div class="problem-stat">👩‍🏫 1.2M teacher vacancy gap nationally</div>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-num">04</div>
+      <h3>Learning Outcome Gaps</h3>
+      <p>ASER 2023 data shows 50%+ of Class 5 students cannot read a Class 2 text. Traditional rote-learning systems don't identify or address individual learning gaps at scale, leading to systemic underperformance.</p>
+      <div class="problem-stat">📉 50%+ students 3 grade levels behind</div>
+    </div>
+  </div>
+</section>
+
+<!-- Architecture -->
+<section class="architecture-section" id="platform">
+  <div class="section-label reveal">Technical Architecture</div>
+  <h2 class="section-title reveal">A platform built for<br>India-scale <em style="color:var(--saffron);font-style:italic;">resilience</em></h2>
+  <p class="section-sub reveal">Five interconnected layers designed to work even in the most connectivity-constrained environments, with security and scalability built in from day one.</p>
+
+  <div class="arch-visual reveal">
+    <div class="arch-layers">
+      <div class="arch-layer layer-1">
+        <div class="layer-icon">🤖</div>
+        <div class="layer-info">
+          <h3>AI & Intelligence Layer</h3>
+          <p>Adaptive learning engine, multilingual NLP, content personalization, student performance prediction, and anomaly detection — all running via quantized edge models.</p>
+        </div>
+        <div class="layer-tags">
+          <span class="tag">LLM (Edge-optimized)</span>
+          <span class="tag">RAG Pipeline</span>
+          <span class="tag">ASR (22 langs)</span>
+          <span class="tag">Knowledge Graph</span>
+          <span class="tag">Federated ML</span>
+        </div>
+      </div>
+
+      <div class="arch-layer layer-2">
+        <div class="layer-icon">🌐</div>
+        <div class="layer-info">
+          <h3>Application & API Layer</h3>
+          <p>RESTful and GraphQL APIs powering the student app, teacher dashboard, parent portal, and admin console. Built as microservices with event-driven architecture for extreme scale.</p>
+        </div>
+        <div class="layer-tags">
+          <span class="tag">Microservices</span>
+          <span class="tag">GraphQL</span>
+          <span class="tag">WebSocket</span>
+          <span class="tag">gRPC</span>
+          <span class="tag">API Gateway</span>
+        </div>
+      </div>
+
+      <div class="arch-layer layer-3">
+        <div class="layer-icon">📡</div>
+        <div class="layer-info">
+          <h3>Offline-First Sync Layer</h3>
+          <p>Progressive Web App architecture with service workers, local SQLite, and intelligent delta sync. Students can access full curriculum offline; sync happens when connectivity is available.</p>
+        </div>
+        <div class="layer-tags">
+          <span class="tag">PWA + Service Workers</span>
+          <span class="tag">CRDTs</span>
+          <span class="tag">Delta Sync</span>
+          <span class="tag">SQLite (local)</span>
+          <span class="tag">Mesh networking</span>
+        </div>
+      </div>
+
+      <div class="arch-layer layer-4">
+        <div class="layer-icon">🗃️</div>
+        <div class="layer-info">
+          <h3>Data & Storage Layer</h3>
+          <p>Distributed PostgreSQL clusters across 5 Indian data centers (Delhi, Mumbai, Chennai, Kolkata, Hyderabad). Data residency compliance with DPDP Act 2023. Encrypted at rest and in transit.</p>
+        </div>
+        <div class="layer-tags">
+          <span class="tag">PostgreSQL Clusters</span>
+          <span class="tag">Redis Cache</span>
+          <span class="tag">MinIO (media)</span>
+          <span class="tag">DPDP Compliant</span>
+          <span class="tag">AES-256</span>
+        </div>
+      </div>
+
+      <div class="arch-layer layer-5">
+        <div class="layer-icon">☁️</div>
+        <div class="layer-info">
+          <h3>Infrastructure & DevOps Layer</h3>
+          <p>Multi-region Kubernetes deployment on Indian cloud (NIC Cloud + AWS Mumbai). Auto-scaling handles 10x traffic spikes during exam seasons. GitOps CI/CD with zero-downtime deployments.</p>
+        </div>
+        <div class="layer-tags">
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Terraform IaC</span>
+          <span class="tag">GitOps</span>
+          <span class="tag">Prometheus + Grafana</span>
+          <span class="tag">NIC Cloud</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dashboard mockup -->
+<section class="dashboard-section">
+  <div class="section-label reveal">Platform Interface</div>
+  <h2 class="section-title reveal">One intelligent dashboard.<br>Every stakeholder<em style="color:var(--saffron);font-style:italic;">.</em></h2>
+
+  <div class="dashboard-mockup reveal">
+    <div class="dash-topbar">
+      <div class="dash-dots">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+      </div>
+      <div class="dash-title">Vidya Setu — District Admin Dashboard · Pune District</div>
+    </div>
+    <div class="dash-body">
+      <div class="dash-sidebar">
+        <div class="sidebar-logo">
+          <div class="logo-mark">VS</div>
+          <span>VidyaSetu</span>
+        </div>
+        <ul class="sidebar-nav">
+          <li class="active">📊 Overview</li>
+          <li>🎓 Students</li>
+          <li>👩‍🏫 Teachers</li>
+          <li>📚 Curriculum</li>
+          <li>📡 Connectivity</li>
+          <li>🧠 AI Insights</li>
+          <li>🔒 Security</li>
+          <li>⚙️ Settings</li>
+        </ul>
+      </div>
+      <div class="dash-main">
+        <div class="dash-welcome">
+          <h2>Good morning, District Commissioner Sharma 👋</h2>
+          <p>Here's how Pune district's 1,247 schools are performing today — Wednesday, 25 Feb 2026</p>
+        </div>
+
+        <div class="dash-metric-row">
+          <div class="dash-metric">
+            <div class="dash-metric-label">Active Students</div>
+            <div class="dash-metric-val">2.4L</div>
+            <div class="dash-metric-sub">↑ 12% from last month</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dash-metric-label">Avg Learning Score</div>
+            <div class="dash-metric-val">78%</div>
+            <div class="dash-metric-sub">↑ 6pts vs baseline</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dash-metric-label">Schools Online</div>
+            <div class="dash-metric-val">1,231</div>
+            <div class="dash-metric-sub">↑ 98.7% connectivity</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dash-metric-label">AI Sessions Today</div>
+            <div class="dash-metric-val">48K</div>
+            <div class="dash-metric-sub">↑ Peak: 6,200/hr</div>
+          </div>
+        </div>
+
+        <div class="dash-grid-2">
+          <div class="dash-chart-area">
+            <div class="chart-title">Learning Outcomes by Grade (Weekly)</div>
+            <div class="chart-bars">
+              <div class="ch-bar" style="height:65%"></div>
+              <div class="ch-bar ch-bar-2" style="height:72%"></div>
+              <div class="ch-bar" style="height:58%"></div>
+              <div class="ch-bar ch-bar-2" style="height:81%"></div>
+              <div class="ch-bar" style="height:70%"></div>
+              <div class="ch-bar ch-bar-2" style="height:88%"></div>
+              <div class="ch-bar" style="height:75%"></div>
+            </div>
+            <div class="chart-footer">
+              <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+            </div>
+          </div>
+
+          <div class="dash-activity">
+            <div class="chart-title">Live Activity</div>
+            <ul class="activity-list">
+              <li>
+                <div class="act-dot" style="background:var(--green)"></div>
+                <div class="act-text">Class 8B completed Math module — Aurangabad HS</div>
+                <div class="act-time">2m ago</div>
+              </li>
+              <li>
+                <div class="act-dot" style="background:var(--saffron)"></div>
+                <div class="act-text">AI flagged 23 at-risk students in Nashik cluster</div>
+                <div class="act-time">8m ago</div>
+              </li>
+              <li>
+                <div class="act-dot" style="background:var(--gold)"></div>
+                <div class="act-text">Offline sync completed — Igatpuri block (87 schools)</div>
+                <div class="act-time">15m ago</div>
+              </li>
+              <li>
+                <div class="act-dot" style="background:var(--green)"></div>
+                <div class="act-text">Teacher training batch uploaded — Malegaon</div>
+                <div class="act-time">31m ago</div>
+              </li>
+              <li>
+                <div class="act-dot" style="background:rgba(128,0,128,0.7)"></div>
+                <div class="act-text">New Marathi content pack deployed — 1.2GB</div>
+                <div class="act-time">1h ago</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features-section" id="features">
+  <div class="features-intro">
+    <div>
+      <div class="section-label reveal">Core Features</div>
+      <h2 class="section-title reveal">Every feature designed<br>for <em style="color:var(--saffron);font-style:italic;">Bharat first</em></h2>
+    </div>
+    <p class="section-sub reveal" style="margin-bottom:0;">Not a Western product retrofitted for India. Vidya Setu is designed ground-up for low-bandwidth environments, multilingual populations, and India's regulatory landscape.</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card featured reveal">
+      <div>
+        <span class="feature-icon">🧠</span>
+        <h3>AI-Powered Adaptive Learning Engine</h3>
+        <p>Our federated learning system builds personalized learning paths for each student without sending raw data to servers. Models run on-device using ONNX-quantized versions — works on ₹5,000 Android devices with 2GB RAM.</p>
+        <div class="feature-highlight">⚡ 40% better learning outcomes vs traditional delivery</div>
+      </div>
+      <div class="feature-visual">
+        <div class="dashboard-mini">
+          <p style="font-size:11px;color:var(--muted);margin-bottom:10px;">Student Progress — Anjali, Class 6 · Wardha</p>
+          <div class="dash-bar d1"></div>
+          <p style="font-size:9px;color:var(--muted);margin-bottom:6px;">Mathematics: Advanced</p>
+          <div class="dash-bar d2"></div>
+          <p style="font-size:9px;color:var(--muted);margin-bottom:6px;">Science: Proficient</p>
+          <div class="dash-bar d3"></div>
+          <p style="font-size:9px;color:var(--muted);margin-bottom:6px;">Hindi: On Track</p>
+          <div class="dash-bar d4"></div>
+          <p style="font-size:9px;color:var(--muted);margin-bottom:6px;">Social Studies: Needs support</p>
+          <div class="dash-bar d5"></div>
+          <p style="font-size:9px;color:var(--muted);">English: Beginner → guided path active</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card reveal">
+      <span class="feature-icon">📡</span>
+      <h3>Offline-First Architecture</h3>
+      <p>Complete curriculum access without internet. Content is synced during connectivity windows (even 2G) using delta compression. Students in no-network zones get the full experience via mesh WiFi from school access points.</p>
+      <div class="feature-highlight">🌐 Works on 2G · 100% content offline</div>
+    </div>
+
+    <div class="feature-card reveal">
+      <span class="feature-icon">🗣️</span>
+      <h3>22-Language Multilingual Platform</h3>
+      <p>Full platform UI, AI tutor, and curriculum content in all 22 Schedule 8 languages. Auto-translation pipeline with human review ensures regional accuracy. Voice input via ASR for students who can't type fluently.</p>
+      <div class="feature-highlight">🎙 Voice-first UI for low-literacy parents</div>
+    </div>
+
+    <div class="feature-card reveal">
+      <span class="feature-icon">👩‍🏫</span>
+      <h3>AI Teacher Assistant</h3>
+      <p>Empowers India's overwhelmed teachers with AI that handles routine Q&A, grading of objective questions, and learning gap identification — freeing teachers to focus on mentorship and complex teaching.</p>
+      <div class="feature-highlight">⏱ Saves 3+ hrs/day per teacher</div>
+    </div>
+
+    <div class="feature-card reveal">
+      <span class="feature-icon">📊</span>
+      <h3>Government Analytics Dashboard</h3>
+      <p>District and state education departments get real-time visibility into learning outcomes, dropout risk, school performance, and teacher effectiveness — enabling data-driven policy at scale.</p>
+      <div class="feature-highlight">🏛 DIKSHA & NAS integration built-in</div>
+    </div>
+
+    <div class="feature-card reveal">
+      <span class="feature-icon">👨‍👩‍👧</span>
+      <h3>Parent & Community Portal</h3>
+      <p>WhatsApp-integrated updates for parents on their child's progress in their regional language. Community teachers and local volunteers can contribute localized content through a structured review pipeline.</p>
+      <div class="feature-highlight">💬 WhatsApp-native, no app needed</div>
+    </div>
+  </div>
+</section>
+
+<!-- Roadmap -->
+<section class="roadmap-section" id="roadmap">
+  <div class="section-label reveal">Deployment Roadmap</div>
+  <h2 class="section-title reveal">From pilot to<br><em style="color:var(--saffron);font-style:italic;">national scale</em></h2>
+  <p class="section-sub reveal">A phased approach that validates impact before scaling, ensuring we build the right thing for India's diverse educational contexts.</p>
+
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-dot">🚀</div>
+      <div class="timeline-content">
+        <div class="timeline-meta">
+          <span class="timeline-phase">Phase 1 — Foundation & Pilot</span>
+          <span class="phase-badge phase-active">Active · Q1 2025</span>
+        </div>
+        <p>Launch in 3 pilot districts (Wardha, MH; Rae Bareli, UP; Kalahandi, OD) — specifically chosen for diversity in language, connectivity, and socioeconomic profile. 500 schools, 100K students. Build feedback loops with ground-level stakeholders.</p>
+        <div class="timeline-deliverables">
+          <span class="deliverable">Core PWA</span>
+          <span class="deliverable">Hindi + Marathi + Odia</span>
+          <span class="deliverable">Offline sync v1</span>
+          <span class="deliverable">Teacher dashboard</span>
+          <span class="deliverable">ASER baseline integration</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">📈</div>
+      <div class="timeline-content">
+        <div class="timeline-meta">
+          <span class="timeline-phase">Phase 2 — State Rollout</span>
+          <span class="phase-badge phase-planning">Planning · Q3 2025</span>
+        </div>
+        <p>Expand to 3 full states (Maharashtra, Uttar Pradesh, Odisha) with 50,000+ schools. Integrate with State Education Portals and DIKSHA platform. Launch government analytics dashboard. 12-language support.</p>
+        <div class="timeline-deliverables">
+          <span class="deliverable">12 languages</span>
+          <span class="deliverable">State portal integration</span>
+          <span class="deliverable">AI tutor v2</span>
+          <span class="deliverable">Parent WhatsApp</span>
+          <span class="deliverable">50K schools</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">🌏</div>
+      <div class="timeline-content">
+        <div class="timeline-meta">
+          <span class="timeline-phase">Phase 3 — National Scale</span>
+          <span class="phase-badge phase-future">Planned · Q2 2026</span>
+        </div>
+        <p>Full national deployment across all 28 states and 8 UTs. All 22 official languages. Integration with NEP 2020 curriculum framework, DigiLocker, and APAAR student ID system. Target: 100M active students.</p>
+        <div class="timeline-deliverables">
+          <span class="deliverable">22 languages</span>
+          <span class="deliverable">APAAR integration</span>
+          <span class="deliverable">100M students</span>
+          <span class="deliverable">Federated AI v3</span>
+          <span class="deliverable">600K+ schools</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">🌟</div>
+      <div class="timeline-content">
+        <div class="timeline-meta">
+          <span class="timeline-phase">Phase 4 — Global South Expansion</span>
+          <span class="phase-badge phase-future">Vision · 2027+</span>
+        </div>
+        <p>Open-source the core platform for adaptation by other Global South nations (Bangladesh, Nepal, Sub-Saharan Africa). Establish a multilateral open education infrastructure consortium under UNESCO framework.</p>
+        <div class="timeline-deliverables">
+          <span class="deliverable">Open-source core</span>
+          <span class="deliverable">UNESCO partnership</span>
+          <span class="deliverable">Multi-nation API</span>
+          <span class="deliverable">Global South SDK</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Security -->
+<section class="security-section" id="security">
+  <div class="section-label reveal">Trust & Security</div>
+  <h2 class="section-title reveal">Child-safe.<br><em style="color:var(--saffron);font-style:italic;">Privacy-first.</em><br>Sovereign.</h2>
+  <p class="section-sub reveal">Handling data of 250M+ minors demands the highest security standards. Vidya Setu is built on a zero-trust architecture, fully compliant with India's DPDP Act 2023.</p>
+
+  <div class="security-grid reveal">
+    <div class="security-visual">
+      <div class="shield-ring"></div>
+      <div class="shield-ring"></div>
+      <div class="shield-ring"></div>
+      <div class="security-nodes">
+        <div class="sec-node">🔐</div>
+        <div class="sec-node">🛡️</div>
+        <div class="sec-node">🔏</div>
+        <div class="sec-node">🔑</div>
+      </div>
+      <div class="shield">
+        <div class="shield-core">🏛️</div>
+      </div>
+    </div>
+
+    <div class="security-list">
+      <div class="sec-item">
+        <div class="sec-item-icon">🔐</div>
+        <div>
+          <h4>Zero-Trust Architecture</h4>
+          <p>Every API call authenticated with short-lived JWT + mTLS. No implicit trust between services. Role-based access control (RBAC) with principle of least privilege across all 6 user roles.</p>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-item-icon">🧒</div>
+        <div>
+          <h4>COPPA & DPDP Act 2023 Compliance</h4>
+          <p>No behavioral advertising. No third-party data sharing. Parental consent flows built into onboarding. Student data is the student's data — deletable on request with automated data purge pipelines.</p>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-item-icon">🇮🇳</div>
+        <div>
+          <h4>Data Sovereignty</h4>
+          <p>All student data stored exclusively in India (NIC MeghRaj cloud + AWS Mumbai). No cross-border data transfer. Encrypts data at rest (AES-256) and in transit (TLS 1.3). Key management via India KMS.</p>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-item-icon">🛡️</div>
+        <div>
+          <h4>AI Safety & Content Moderation</h4>
+          <p>All AI-generated content passes through a 3-layer safety pipeline: automated classifier → NCERT curriculum alignment check → human review queue for edge cases. No harmful content can reach students.</p>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-item-icon">🔎</div>
+        <div>
+          <h4>Continuous Security Monitoring</h4>
+          <p>24/7 SOC with automated threat detection via SIEM. Bug bounty program with ₹10L+ rewards. Annual third-party pen testing mandated. CERT-In reporting integration for incident response.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tricolor bar -->
+<div class="tricolor-bar"></div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <div class="section-label">Join the Mission</div>
+    <h2>Let's build an <em style="font-style:italic;color:var(--saffron)">educated India</em> together</h2>
+    <p>Whether you're a state government, an NGO, a teacher, or a technologist — there's a role for you in making quality education accessible to every Indian child, regardless of where they were born.</p>
+    <div class="cta-actions">
+      <button class="btn-primary">Partner With Us</button>
+      <button class="btn-ghost">Technical Docs →</button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-brand">
+    <div class="nav-logo">
+      <div class="logo-mark">VS</div>
+      <span class="logo-text">Vidya<span>Setu</span></span>
+    </div>
+    <p>Digital infrastructure for India's education future</p>
+  </div>
+  <div class="footer-links">
+    <a href="#">Architecture</a>
+    <a href="#">API Docs</a>
+    <a href="#">Open Source</a>
+    <a href="#">Research</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">DPDP Compliance</a>
+  </div>
+  <div class="footer-right">
+    Built with ❤️ for Bharat · 2025–2026
+  </div>
+</footer>
